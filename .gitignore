@@ -1,0 +1,8 @@
+/*
+.*
+!/src/
+!/tbb/
+!/.gitignore
+!/makefile
+!/readme.md
+!/toolchain.cmake
