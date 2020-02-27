@@ -65,3 +65,9 @@ Add `/opt/llvm/bin` to the `PATH` environment variable.
 export PATH="/opt/llvm/bin:${PATH}"
 clang --version
 ```
+
+<!--
+
+clang++ -isystem /opt/llvm/include -fPIC -lc++abi -static -pthread main.cpp
+
+-->
