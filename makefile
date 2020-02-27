@@ -16,6 +16,7 @@ bin/clang: src/llvm
 	  -DCMAKE_INSTALL_PREFIX="$(CURDIR)" \
 	  -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
 	  -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld;lldb;polly;openmp;compiler-rt;libunwind;libcxxabi;libcxx" \
+	  -DLLVM_DEFAULT_TARGET_TRIPLE="x86_64-alpine-linux-musl" \
 	  -DLLVM_TARGETS_TO_BUILD="X86" \
 	  -DLLVM_ENABLE_BACKTRACES=OFF \
 	  -DLLVM_ENABLE_UNWIND_TABLES=OFF \
@@ -53,6 +54,7 @@ bin/clang: src/llvm
 	  -DLIBCXX_USE_COMPILER_RT=ON \
 	  -DLIBCXX_INCLUDE_BENCHMARKS=OFF \
 	  -DLIBCXX_ENABLE_PARALLEL_ALGORITHMS=ON \
+	  -DLIBCXX_STATICALLY_LINK_ABI_IN_STATIC_LIBRARY=ON \
 	  -B build/llvm src/llvm/llvm
 	@ninja -C build/llvm \
 	  install-LTO \

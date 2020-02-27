@@ -69,5 +69,11 @@ clang --version
 <!--
 
 clang++ -isystem /opt/llvm/include -fPIC -lc++abi -static -pthread main.cpp
+ldd a.out
+./a.out
+
+clang++ -isystem /opt/llvm/include -fPIC -lc++abi -pthread main.cpp
+ldd a.out
+./a.out
 
 -->
