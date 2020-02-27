@@ -23,7 +23,7 @@ set(CMAKE_AR "${CMAKE_CURRENT_LIST_DIR}/bin/llvm-ar" CACHE STRING "")
 set(CMAKE_NM "${CMAKE_CURRENT_LIST_DIR}/bin/llvm-nm" CACHE STRING "")
 
 # Set compiler flags.
-set(CLANG_C_FLAGS "-fasm -fPIC -fdiagnostics-absolute-paths -D_DEFAULT_SOURCE=1")
+set(CLANG_C_FLAGS "-fasm -fPIC -fdiagnostics-absolute-paths")
 set(CLANG_C_FLAGS_RELEASE "-flto=full")
 
 set(CLANG_CXX_FLAGS "${CLANG_C_FLAGS} -fcoroutines-ts")

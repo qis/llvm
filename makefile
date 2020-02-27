@@ -111,9 +111,8 @@ include/tbb: src/tbb
 	  -DCMAKE_BUILD_TYPE=Release \
 	  -DCMAKE_INSTALL_PREFIX="$(CURDIR)" \
 	  -DCMAKE_CXX_STANDARD="20" \
-	  -DCMAKE_CXX_EXTENSIONS=ON \
 	  -DCMAKE_CXX_COMPILER="$(CURDIR)/bin/clang++" \
-	  -DCMAKE_CXX_FLAGS_INIT="-fasm -fPIC -D_DEFAULT_SOURCE=1 -Wno-deprecated-volatile" \
+	  -DCMAKE_CXX_FLAGS_INIT="-fasm -fPIC -Wno-deprecated-volatile" \
 	  -DWITH_PSTL=ON \
 	  -B build/tbb src/tbb
 	@ninja -C build/tbb install
