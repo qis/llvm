@@ -1176,6 +1176,17 @@ Parser::ParseCastExpression(CastParseKind ParseKind, bool isAddressOfOperand,
     return Res;
   }
 
+  case tok::kw___unwrap__: {  // unary-expression: '__unwrap__' cast-expression [AH]
+    if (NotPrimaryExpression)
+      *NotPrimaryExpression = true;
+    const SourceLocation UnwrapLoc = ConsumeToken();
+    Res = ParseCastExpression(CastParseKind::UnaryExprOnly);
+    if (!Res.isInvalid())
+      return Actions.ActOnUnwrapOp(getCurScope(), UnwrapLoc, Res.get());
+    Actions.Diag(UnwrapLoc, diag::err_unwrap_message) << "subexpression is invalid";
+    return ExprError();
+  }
+
   case tok::kw___extension__:{//unary-expression:'__extension__' cast-expr [GNU]
     // __extension__ silences extension warnings in the subexpression.
     if (NotPrimaryExpression)

@@ -7270,6 +7270,8 @@ public:
   ExprResult ActOnUnaryOp(Scope *S, SourceLocation OpLoc, tok::TokenKind Op,
                           Expr *Input, bool IsAfterAmp = false);
 
+  ExprResult ActOnUnwrapOp(Scope *S, SourceLocation Loc, Expr *E);
+
   /// Determine whether the given expression is a qualified member
   /// access expression, of a form that could be turned into a pointer to member
   /// with the address-of operator.

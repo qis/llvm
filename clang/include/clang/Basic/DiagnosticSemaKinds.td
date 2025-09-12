@@ -12394,6 +12394,13 @@ def note_redefinition_include_same_file : Note<
   "'%0' included multiple times, additional include site here">;
 }
 
+let CategoryName = "Unwrap Issue" in {
+def err_unwrap_message : Error<
+  "'__unwrap__' %0">;
+def err_unwrap_operand : Error<
+  "'__unwrap__' operand %0 %1">;
+} // end of unwrap issue category
+
 let CategoryName = "Coroutines Issue" in {
 def err_return_in_coroutine : Error<
   "return statement not allowed in coroutine; did you mean 'co_return'?">;
