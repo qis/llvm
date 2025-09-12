@@ -1,0 +1,115 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 31
+  },
+  "configurePresets": [
+    {
+      "hidden": true,
+      "name": "default",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "installDir": "${sourceDir}/build/${presetName}/install",
+      "architecture": { "value": "x64", "strategy": "external" },
+      "warnings": { "dev": false },
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "LLVM_ENABLE_PROJECTS": "clang;clang-tools-extra;lld",
+        "LLVM_ENABLE_RUNTIMES": "compiler-rt;libcxxabi;libcxx",
+        "LLVM_TARGETS_TO_BUILD": "X86",
+        "LLVM_ENABLE_BINDINGS": false,
+        "LLVM_ENABLE_DOXYGEN": false,
+        "LLVM_ENABLE_LIBCXX": false,
+        "LLVM_ENABLE_LTO": false,
+        "LLVM_ENABLE_PER_TARGET_RUNTIME_DIR": true,
+        "LLVM_ENABLE_WARNINGS": false,
+        "LLVM_INCLUDE_BENCHMARKS": false,
+        "LLVM_INCLUDE_EXAMPLES": false,
+        "LLVM_INCLUDE_TESTS": false,
+        "LLVM_INCLUDE_DOCS": false,
+        "CLANG_DEFAULT_CXX_STDLIB": "libc++",
+        "CLANG_DEFAULT_RTLIB": "compiler-rt",
+        "CLANG_DEFAULT_UNWINDLIB": "none",
+        "CLANG_DEFAULT_LINKER": "lld",
+        "COMPILER_RT_BUILD_BUILTINS": true,
+        "COMPILER_RT_BUILD_GWP_ASAN": false,
+        "COMPILER_RT_BUILD_LIBFUZZER": false,
+        "COMPILER_RT_BUILD_MEMPROF": false,
+        "COMPILER_RT_BUILD_ORC": false,
+        "COMPILER_RT_BUILD_PROFILE": false,
+        "COMPILER_RT_BUILD_CTX_PROFILE": false,
+        "COMPILER_RT_BUILD_SANITIZERS": false,
+        "COMPILER_RT_BUILD_XRAY": false,
+        "COMPILER_RT_DEFAULT_TARGET_ONLY": false,
+        "LIBCXXABI_ENABLE_SHARED": false,
+        "LIBCXXABI_ENABLE_STATIC": true,
+        "LIBCXXABI_ENABLE_EXCEPTIONS": false,
+        "LIBCXXABI_INSTALL_HEADERS": false,
+        "LIBCXXABI_INSTALL_LIBRARY": false,
+        "LIBCXXABI_USE_COMPILER_RT": true,
+        "LIBCXXABI_USE_LLVM_UNWINDER": false,
+        "LIBCXX_ABI_UNSTABLE": true,
+        "LIBCXX_ABI_VERSION": "2",
+        "LIBCXX_ADDITIONAL_COMPILE_FLAGS": "-fno-exceptions;-fno-rtti",
+        "LIBCXX_ENABLE_SHARED": false,
+        "LIBCXX_ENABLE_STATIC": true,
+        "LIBCXX_ENABLE_STATIC_ABI_LIBRARY": true,
+        "LIBCXX_ENABLE_EXCEPTIONS": false,
+        "LIBCXX_ENABLE_RTTI": false,
+        "LIBCXX_HAS_ATOMIC_LIB": false,
+        "LIBCXX_INCLUDE_BENCHMARKS": false,
+        "LIBCXX_INSTALL_HEADERS": true,
+        "LIBCXX_INSTALL_LIBRARY": true,
+        "LIBCXX_INSTALL_MODULES": true,
+        "LIBCXX_USE_COMPILER_RT": true
+      }
+    },
+    {
+      "name": "debug",
+      "inherits": "default",
+      "displayName": "Debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "release",
+      "inherits": "default",
+      "displayName": "Release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug",
+      "displayName": "Debug",
+      "configurePreset": "debug"
+    },
+    {
+      "name": "release",
+      "displayName": "Release",
+      "configurePreset": "release"
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "debug",
+      "displayName": "Debug",
+      "steps": [
+        { "name": "debug", "type": "configure" },
+        { "name": "debug", "type": "build" }
+      ]
+    },
+    {
+      "name": "release",
+      "displayName": "Release",
+      "steps": [
+        { "name": "release", "type": "configure" },
+        { "name": "release", "type": "build" }
+      ]
+    }
+  ]
+}

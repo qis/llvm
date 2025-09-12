@@ -447,6 +447,9 @@ UNARY_OPERATION(Extension, "__extension__")
 // [C++ Coroutines] co_await operator
 UNARY_OPERATION(Coawait, "co_await")
 
+// [Unwrap] __unwrap__ operator
+UNARY_OPERATION(Unwrap, "__unwrap__")
+
 #undef CAST_OPERATION
 #undef BINARY_OPERATION
 #undef UNARY_OPERATION
