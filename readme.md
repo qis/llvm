@@ -39,8 +39,9 @@ git add readme.md
 git commit -m "Add readme"
 git push -uf origin unwrap
 
+git switch master
 git switch -c 20.1.8
-git apply ../unwrap.diff
+git apply ../unwrap-20.1.8.diff
 git add . && git commit -m "Apply unwrap patches"
 git push -uf origin 20.1.8
 ```
