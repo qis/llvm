@@ -1,6 +1,14 @@
 # Unwrap
 Adds the `__unwrap__` keyword to `clang(1)`.
 
+## Patch
+The LLVM patches are located in supported release branches:
+
+* [20.1.8](https://github.com/qis/llvm/tree/20.1.8)
+* [21.1.0](https://github.com/qis/llvm/tree/21.1.0)
+
+Only the latest version is officially supported.
+
 ## Debug
 Instructions for debug builds.
 
@@ -45,10 +53,9 @@ git apply ../unwrap-20.1.8.diff
 git add . && git commit -m "Apply unwrap patches"
 git push -uf origin 20.1.8
 ```
--->
 
-## Upgrade
-Instructions for upgrading to the latest LLVM release.
+## 21.1.0
+Instructions for upgrading to the 21.1.0 LLVM release.
 
 ```sh
 git clone git@github.com:qis/llvm llvm && cd llvm
@@ -79,3 +86,4 @@ git add . && git commit -m "Apply unwrap patches"
 git diff 3623fe661ae3 > ../unwrap-21.1.0.diff
 git push -u origin 21.1.0
 ```
+-->
