@@ -9,7 +9,7 @@ git remote add upstream https://github.com/llvm/llvm-project
 # Get changes.
 git branch -a
 git switch 21.1.0
-git diff $(git log --skip=1 -n 1 --format=%h) > ../unwrap-21.1.0.diff
+git diff HEAD^ HEAD > ../unwrap-21.1.0.diff
 
 # Update master.
 git switch master
@@ -22,7 +22,7 @@ git switch -c 21.1.4
 
 # Apply and review changes.
 git apply ../unwrap-21.1.0.diff
-git diff $(git log -n 1 --format=%h)
+git diff HEAD
 
 # Build and run tests.
 cmake --preset debug && \
@@ -44,3 +44,9 @@ vim -p readme.md update.md
 git add readme.md update.md && git commit -m "Update readme"
 git push
 ```
+
+<!--
+Alternative commands:
+* `git diff HEAD^ HEAD` is equivalent to `git diff $(git log --skip=1 -n 1 --format=%h)`
+* `git diff HEAD` is equivalent to `git diff $(git log -n 1 --format=%h)`
+-->
