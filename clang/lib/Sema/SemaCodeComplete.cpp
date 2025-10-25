@@ -571,6 +571,7 @@ static QualType getPreferredTypeOfUnaryArg(Sema &S, QualType ContextType,
     return ContextType;
   case tok::kw___real:
   case tok::kw___imag:
+  case tok::kw___unwrap__:
     return QualType();
   default:
     assert(false && "unhandled unary op");

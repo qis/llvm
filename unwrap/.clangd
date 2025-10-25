@@ -1,0 +1,12 @@
+---
+CompileFlags:
+  Add: [ -xc++, -std=c++26, -fno-exceptions, -fno-rtti ]
+  CompilationDatabase: None
+Diagnostics:
+  ClangTidy:
+    FastCheckFilter: None
+  MissingIncludes: None
+  UnusedIncludes: Strict
+InlayHints:
+  Enabled: No
+...
