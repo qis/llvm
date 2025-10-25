@@ -6,6 +6,7 @@ The LLVM patches are located in supported release branches:
 
 * [20.1.8](https://github.com/qis/llvm/tree/20.1.8)
 * [21.1.0](https://github.com/qis/llvm/tree/21.1.0)
+* [21.1.4](https://github.com/qis/llvm/tree/21.1.4)
 
 Only the latest version is officially supported.
 
@@ -52,38 +53,5 @@ git switch -c 20.1.8
 git apply ../unwrap-20.1.8.diff
 git add . && git commit -m "Apply unwrap patches"
 git push -uf origin 20.1.8
-```
-
-## 21.1.0
-Instructions for upgrading to the 21.1.0 LLVM release.
-
-```sh
-git clone git@github.com:qis/llvm llvm && cd llvm
-git remote add upstream https://github.com/llvm/llvm-project
-
-git branch -a
-git switch 20.1.8
-git log
-git diff 87f0227cb601 > ../unwrap-20.1.8.diff
-git switch master
-git fetch upstream llvmorg-21.1.0:refs/tags/llvmorg-21.1.0
-git reset --hard llvmorg-21.1.0 && git gc --prune=now
-git push -uf origin master
-
-git switch -c 21.1.0
-git apply ../unwrap-20.1.8.diff
-
-cmake --preset debug && \
-cmake --preset release
-
-ninja -C build/debug lld clang clangd runtimes && \
-ninja -C build/release lld clang clangd runtimes
-
-ninja -C build/debug unwrap-test-run
-ninja -C build/release unwrap-test-run
-
-git add . && git commit -m "Apply unwrap patches"
-git diff 3623fe661ae3 > ../unwrap-21.1.0.diff
-git push -u origin 21.1.0
 ```
 -->
